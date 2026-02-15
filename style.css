@@ -1,0 +1,157 @@
+/* Custom Styles & Animations */
+body {
+    overflow-x: hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation Transition */
+.nav-scrolled {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* Text Selection */
+::selection {
+    background: #d4af37;
+    color: #0f172a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #faf9f6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+
+/* Reveal Animation Classes */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover Effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Loading States */
+img {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+img[src=""] {
+    opacity: 0;
+}
+
+/* Form Focus States */
+input:focus, textarea:focus, select:focus {
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: all 0.3s ease;
+    transform-origin: top;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e5c2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Card Shimmer Effect for Loading */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, #faf9f6 4%, #f0f0f0 25%, #faf9f6 36%);
+    background-size: 1000px 100%;
+}
+
+/* Parallax Helper */
+.parallax-container {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Button Ripple Effect */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Responsive Typography Adjustments */
+@media (max-width: 768px) {
+    .font-serif {
+        letter-spacing: -0.02em;
+    }
+}
+
+/* Print Styles */
+@media print {
+    nav, footer, .no-print {
+        display: none;
+    }
+    
+    body {
+        background: white;
+    }
+}

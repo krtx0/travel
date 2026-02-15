@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruthvi Paryatan Travel | Bespoke Travel Experiences</title>
+    <meta name="description" content="Premium personalized travel planning by Leena Mehta. Carefully crafted travel experiences designed around you.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            gold: '#d4af37',
+                            cream: '#faf9f6',
+                            charcoal: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans text-brand-charcoal bg-brand-cream antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="absolute top-0 left-0 w-full z-50 bg-brand-dark backdrop-blur-md py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="compass" class="w-8 h-8 text-brand-gold"></i>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-xl font-semibold tracking-wide text-white" id="nav-logo-text">Pruthvi Paryatan</span>
+                        <span class="text-xs tracking-[0.2em] text-white/80 uppercase" id="nav-subtext">Travel</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#experiences" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">Experiences</a>
+                    <a href="#process" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">How It Works</a>
+                    <a href="#testimonials" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">Stories</a>
+                    <a href="#about" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">About</a>
+                </div>
+
+                <button onclick="openModal()" class="hidden md:flex items-center gap-2 bg-brand-gold text-brand-dark px-6 py-3 rounded-full font-medium hover:bg-white transition-all duration-300 transform hover:scale-105">
+                    <span>Plan My Trip</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-dark/95 backdrop-blur-md py-6 px-6">
+            <div class="flex flex-col gap-4">
+                <a href="#experiences" class="text-white/90 py-2 border-b border-white/10">Experiences</a>
+                <a href="#process" class="text-white/90 py-2 border-b border-white/10">How It Works</a>
+                <a href="#testimonials" class="text-white/90 py-2 border-b border-white/10">Stories</a>
+                <a href="#about" class="text-white/90 py-2 border-b border-white/10">About</a>
+                <button onclick="openModal()" class="bg-brand-gold text-brand-dark px-6 py-3 rounded-full font-medium mt-4">Plan My Trip</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Parallax -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/60 via-brand-dark/40 to-brand-dark/80 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=2668&auto=format&fit=crop" 
+                 alt="Luxury Travel Destination" 
+                 class="w-full h-full object-cover scale-110" 
+                 id="hero-image">
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 max-w-5xl mx-auto px-6 text-center">
+            <div class="hero-content opacity-0 translate-y-8">
+                <p class="text-brand-gold text-sm tracking-[0.3em] uppercase mb-6 font-medium">Bespoke Travel Design</p>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium leading-tight mb-6">
+                    Not just trips.<br>
+                    <span class="italic text-brand-gold">Carefully crafted</span><br>
+                    experiences.
+                </h1>
+                <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    Personalized journeys designed around your story. Led by Leena Mehta, we transform your travel dreams into seamless, stress-free realities.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="openModal()" class="group bg-brand-gold text-brand-dark px-8 py-4 rounded-full font-semibold text-lg hover:bg-white transition-all duration-300 flex items-center gap-3">
+                        <span>Plan My Trip</span>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </button>
+                    <a href="#experiences" class="text-white border border-white/30 px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
+                        <span>View Experiences</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="bg-brand-dark py-8 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-6 text-white/60 text-sm tracking-wide">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-gold"></i>
+                    <span>Trusted by 500+ Travelers</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="award" class="w-5 h-5 text-brand-gold"></i>
+                    <span>Owner-Led Planning</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="clock" class="w-5 h-5 text-brand-gold"></i>
+                    <span>24/7 Travel Support</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="heart" class="w-5 h-5 text-brand-gold"></i>
+                    <span>100% Custom Itineraries</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-reveal">
+                <p class="text-brand-gold text-sm tracking-[0.2em] uppercase mb-4">Client Stories</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-6">Seamless Planning.<br>Exceptional Experiences.</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Hear from travelers who discovered the difference of truly personalized travel planning.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                    </div>
+                    <p class="text-brand-charcoal mb-6 leading-relaxed italic">"Leena's attention to detail is remarkable. From our honeymoon in Santorini to our anniversary in Bali, every moment was perfectly orchestrated. Truly stress-free travel."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-brand-dark rounded-full flex items-center justify-center text-white font-serif">RK</div>
+                        <div>
+                            <p class="font-semibold text-brand-dark">Rohit & Priya K.</p>
+                            <p class="text-sm text-gray-500">Honeymoon Travelers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300" style="transition-delay: 100ms;">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                    </div>
+                    <p class="text-brand-charcoal mb-6 leading-relaxed italic">"The communication throughout was excellent. Leena handled everything—from visa assistance to last-minute changes. It felt like having a trusted friend planning our trip."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-brand-dark rounded-full flex items-center justify-center text-white font-serif">SM</div>
+                        <div>
+                            <p class="font-semibold text-brand-dark">Sanjay M.</p>
+                            <p class="text-sm text-gray-500">Family Vacation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300" style="transition-delay: 200ms;">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
+                    </div>
+                    <p class="text-brand-charcoal mb-6 leading-relaxed italic">"Professional, reliable, and incredibly detailed. Our corporate retreat was flawless. The itinerary balanced work and leisure perfectly. Competitive pricing for premium service."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-brand-dark rounded-full flex items-center justify-center text-white font-serif">AP</div>
+                        <div>
+                            <p class="font-semibold text-brand-dark">Anita P.</p>
+                            <p class="text-sm text-gray-500">Corporate Travel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Categories -->
+    <section id="experiences" class="py-24 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 scroll-reveal">
+                <div class="max-w-2xl">
+                    <p class="text-brand-gold text-sm tracking-[0.2em] uppercase mb-4">Curated Experiences</p>
+                    <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">Journeys designed<br>for every occasion</h2>
+                </div>
+                <p class="text-gray-600 max-w-md mt-6 md:mt-0">From romantic escapes to adventurous expeditions, we craft personalized itineraries that reflect your unique travel style.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- International -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal">
+                    <img src="http://static.photos/travel/800x1000/1" alt="International Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-brand-gold text-sm tracking-wider uppercase mb-2">Worldwide</p>
+                            <h3 class="font-serif text-2xl text-white mb-2">International Escapes</h3>
+                            <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">Europe, Asia, Americas & beyond</p>
+                            <button class="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                <span>Explore</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 100ms;">
+                    <img src="http://static.photos/luxury/800x1000/2" alt="Luxury Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-brand-gold text-sm tracking-wider uppercase mb-2">Premium</p>
+                            <h3 class="font-serif text-2xl text-white mb-2">Luxury Retreats</h3>
+                            <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">Five-star resorts & exclusive experiences</p>
+                            <button class="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                <span>Explore</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Honeymoon -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 200ms;">
+                    <img src="http://static.photos/nature/800x1000/3" alt="Honeymoon" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-brand-gold text-sm tracking-wider uppercase mb-2">Romance</p>
+                            <h3 class="font-serif text-2xl text-white mb-2">Honeymoon Journeys</h3>
+                            <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">Intimate destinations for couples</p>
+                            <button class="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                <span>Explore</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal">
+                    <img src="http://static.photos/outdoor/800x1000/4" alt="Family Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-brand-gold text-sm tracking-wider uppercase mb-2">Together</p>
+                            <h3 class="font-serif text-2xl text-white mb-2">Family Adventures</h3>
+                            <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">Multi-generational friendly planning</p>
+                            <button class="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                <span>Explore</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 100ms;">
+                    <img src="http://static.photos/office/800x1000/5" alt="Corporate Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-brand-gold text-sm tracking-wider uppercase mb-2">Business</p>
+                            <h3 class="font-serif text-2xl text-white mb-2">Corporate Retreats</h3>
+                            <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">Team building & MICE events</p>
+                            <button class="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                <span>Explore</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adventure -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 200ms;">
+                    <img src="http://static.photos/aerial/800x1000/6" alt="Adventure Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-brand-gold text-sm tracking-wider uppercase mb-2">Expedition</p>
+                            <h3 class="font-serif text-2xl text-white mb-2">Adventure Travel</h3>
+                            <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">Thrilling experiences worldwide</p>
+                            <button class="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                <span>Explore</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="process" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 scroll-reveal">
+                <p class="text-brand-gold text-sm tracking-[0.2em] uppercase mb-4">The Process</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">How we craft<br>your perfect journey</h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Connection Line -->
+                <div class="hidden md:block absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
+
+                <!-- Step 1 -->
+                <div class="relative scroll-reveal">
+                    <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
+                        <i data-lucide="message-circle" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="text-brand-gold font-serif text-lg">01</span>
+                        <h3 class="font-serif text-xl text-brand-dark mt-2 mb-3">Discovery Call</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">We begin with understanding your travel dreams, preferences, and expectations. Every detail matters.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative scroll-reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
+                        <i data-lucide="pen-tool" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="text-brand-gold font-serif text-lg">02</span>
+                        <h3 class="font-serif text-xl text-brand-dark mt-2 mb-3">Custom Design</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Leena personally crafts your itinerary, selecting perfect accommodations, experiences, and logistics.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative scroll-reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
+                        <i data-lucide="check-circle" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="text-brand-gold font-serif text-lg">03</span>
+                        <h3 class="font-serif text-xl text-brand-dark mt-2 mb-3">Seamless Booking</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">We handle all reservations, visas, transfers, and special arrangements. You simply approve.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative scroll-reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
+                        <i data-lucide="phone" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="text-brand-gold font-serif text-lg">04</span>
+                        <h3 class="font-serif text-xl text-brand-dark mt-2 mb-3">24/7 Support</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Travel with complete confidence. We're available around the clock during your journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Trust Section -->
+    <section id="about" class="py-24 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="scroll-reveal">
+                    <p class="text-brand-gold text-sm tracking-[0.2em] uppercase mb-4">About Us</p>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6">Your trusted travel<br>partner since 2010</h2>
+                    <p class="text-white/70 text-lg leading-relaxed mb-6">
+                        Led by Leena Mehta, Pruthvi Paryatan Travel represents a new standard in travel planning. We don't sell packages—we design experiences.
+                    </p>
+                    <p class="text-white/70 leading-relaxed mb-8">
+                        Our approach combines deep destination knowledge with meticulous attention to detail. From the moment you inquire until you return home, experience the peace of mind that comes from having a dedicated travel expert handle every aspect of your journey.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <p class="font-serif text-3xl text-brand-gold">500+</p>
+                            <p class="text-white/60 text-sm">Happy Travelers</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-3xl text-brand-gold">50+</p>
+                            <p class="text-white/60 text-sm">Countries Covered</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-3xl text-brand-gold">14</p>
+                            <p class="text-white/60 text-sm">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-3xl text-brand-gold">100%</p>
+                            <p class="text-white/60 text-sm">Custom Itineraries</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <img src="http://static.photos/people/200x200/42" alt="Leena Mehta" class="w-16 h-16 rounded-full object-cover border-2 border-brand-gold">
+                        <div>
+                            <p class="font-serif text-lg">Leena Mehta</p>
+                            <p class="text-brand-gold text-sm">Founder & Lead Travel Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative scroll-reveal">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden">
+                        <img src="http://static.photos/workspace/800x1000/10" alt="Travel Planning" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-brand-gold text-brand-dark p-6 rounded-2xl max-w-xs hidden md:block">
+                        <p class="font-serif text-lg italic">"Travel is the only thing you buy that makes you richer."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-brand-cream">
+        <div class="max-w-4xl mx-auto px-6 text-center scroll-reveal">
+            <p class="text-brand-gold text-sm tracking-[0.2em] uppercase mb-4">Begin Your Journey</p>
+            <h2 class="font-serif text-4xl md:text-6xl text-brand-dark mb-6">Ready for your<br>perfect trip?</h2>
+            <p class="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">Let's discuss your travel dreams. Schedule a complimentary consultation with Leena and discover how we can transform your next journey into an extraordinary experience.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openModal()" class="bg-brand-dark text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 flex items-center justify-center gap-3">
+                    <span>Schedule Consultation</span>
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                </button>
+                <a href="tel:+919999999999" class="border-2 border-brand-dark text-brand-dark px-10 py-5 rounded-full font-semibold text-lg hover:bg-brand-dark hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    <span>Call Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="compass" class="w-8 h-8 text-brand-gold"></i>
+                        <div class="flex flex-col">
+                            <span class="font-serif text-2xl font-semibold">Pruthvi Paryatan</span>
+                            <span class="text-xs tracking-[0.2em] text-white/60 uppercase">Travel</span>
+                        </div>
+                    </div>
+                    <p class="text-white/60 max-w-sm mb-6">Bespoke travel planning for discerning travelers. Creating personalized journeys that inspire, delight, and exceed expectations.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg mb-6 text-brand-gold">Quick Links</h4>
+                    <ul class="space-y-3 text-white/60">
+                        <li><a href="#experiences" class="hover:text-white transition-colors">Experiences</a></li>
+                        <li><a href="#process" class="hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Leena</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg mb-6 text-brand-gold">Contact</h4>
+                    <ul class="space-y-3 text-white/60">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-gold"></i>
+                            <span>leena@pruthviparyatan.com</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-gold"></i>
+                            <span>+91 99999 99999</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold"></i>
+                            <span>Mumbai, India</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">© 2024 Pruthvi Paryatan Travel. All rights reserved.</p>
+                <p class="text-white/40 text-sm">Crafted with precision and passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-brand-dark/90 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-6">
+            <div class="bg-white rounded-3xl max-w-lg w-full p-8 relative transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                
+                <div class="text-center mb-8">
+                    <h3 class="font-serif text-3xl text-brand-dark mb-2">Plan Your Trip</h3>
+                    <p class="text-gray-600">Fill in your details and Leena will contact you within 24 hours.</p>
+                </div>
+
+                <form onsubmit="handleSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-gold focus:outline-none transition-colors" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-gold focus:outline-none transition-colors" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-gold focus:outline-none transition-colors" placeholder="+91 99999 99999">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Travel Interest</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-gold focus:outline-none transition-colors">
+                            <option>International Travel</option>
+                            <option>Luxury Retreat</option>
+                            <option>Honeymoon</option>
+                            <option>Family Vacation</option>
+                            <option>Corporate Travel</option>
+                            <option>Adventure</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-gold focus:outline-none transition-colors" placeholder="Tell us about your dream trip..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-dark text-white py-4 rounded-xl font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all duration-300">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
