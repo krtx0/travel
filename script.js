@@ -34,7 +34,10 @@ function initAnimations() {
     });
     
     // Scroll Reveal Elements
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const revealElements = document.querySelectorAll(
+  '.scroll-reveal:not(#contact-modal .scroll-reveal)'
+);
+
     
     revealElements.forEach((element, index) => {
         gsap.fromTo(element, 
@@ -106,7 +109,8 @@ function openModal() {
     modal.classList.remove('hidden');
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
-    
+    ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+
     // Animate in
     setTimeout(() => {
         modalContent.style.transform = 'scale(1)';
@@ -121,7 +125,8 @@ function closeModal() {
     // Animate out
     modalContent.style.transform = 'scale(0.95)';
     modalContent.style.opacity = '0';
-    
+    ScrollTrigger.getAll().forEach(trigger => trigger.enable());
+
     setTimeout(() => {
         modal.classList.add('hidden');
         document.body.style.overflow = '';
