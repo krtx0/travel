@@ -436,7 +436,7 @@
                     </div>
 
                     <div class="flex items-center gap-4">
-                        <img src="-" alt="Leena Mehta" class="w-16 h-16 rounded-full object-cover border-2 border-brand-gold">
+                        <img src="https://dribbble.com/tags/logo-for-sale" alt="Leena Mehta" class="w-16 h-16 rounded-full object-cover border-2 border-brand-gold">
                         <div>
                             <p class="font-serif text-lg">Leena Mehta</p>
                             <p class="text-brand-gold text-sm">Founder & Lead Travel Designer</p>
@@ -541,8 +541,9 @@
     <!-- Contact Modal -->
     <div id="contact-modal" class="fixed inset-0 z-[60] hidden">
         <div class="absolute inset-0 bg-brand-dark/90 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-6">
-            <div class="bg-white rounded-3xl max-w-lg w-full p-8 relative transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+        <div class="fixed inset-0 flex justify-center items-start p-4 overflow-y-auto">
+            <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 relative transform scale-95 opacity-0 transition-all duration-300 my-8 overflow-hidden" id="modal-content">
+
                 <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center hover:bg-gray-200 transition-colors">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
@@ -593,5 +594,4 @@
         lucide.createIcons();
     </script>
 </body>
-
 </html>
