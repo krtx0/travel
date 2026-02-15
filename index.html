@@ -17,6 +17,10 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+
+
     <!-- GSAP for Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -46,47 +50,8 @@
 </head>
 <body class="font-sans text-brand-charcoal bg-brand-cream antialiased">
 
-    <!-- Navigation -->
-    <nav id="navbar" class="absolute top-0 left-0 w-full z-50 bg-brand-dark backdrop-blur-md py-4 shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="compass" class="w-8 h-8 text-brand-gold"></i>
-                    <div class="flex flex-col">
-                        <span class="font-serif text-xl font-semibold tracking-wide text-white" id="nav-logo-text">Pruthvi Paryatan</span>
-                        <span class="text-xs tracking-[0.2em] text-white/80 uppercase" id="nav-subtext">Travel</span>
-                    </div>
-                </div>
-                
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#experiences" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">Experiences</a>
-                    <a href="#process" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">How It Works</a>
-                    <a href="#testimonials" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">Stories</a>
-                    <a href="#about" class="nav-link text-white/90 hover:text-brand-gold transition-colors text-sm tracking-wide">About</a>
-                </div>
-
-                <button onclick="openModal()" class="hidden md:flex items-center gap-2 bg-brand-gold text-brand-dark px-6 py-3 rounded-full font-medium hover:bg-white transition-all duration-300 transform hover:scale-105">
-                    <span>Plan My Trip</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-                    <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-dark/95 backdrop-blur-md py-6 px-6">
-            <div class="flex flex-col gap-4">
-                <a href="#experiences" class="text-white/90 py-2 border-b border-white/10">Experiences</a>
-                <a href="#process" class="text-white/90 py-2 border-b border-white/10">How It Works</a>
-                <a href="#testimonials" class="text-white/90 py-2 border-b border-white/10">Stories</a>
-                <a href="#about" class="text-white/90 py-2 border-b border-white/10">About</a>
-                <button onclick="openModal()" class="bg-brand-gold text-brand-dark px-6 py-3 rounded-full font-medium mt-4">Plan My Trip</button>
-            </div>
-        </div>
-    </nav>
+<custom-navbar></custom-navbar>
+    
 
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
@@ -102,7 +67,7 @@
         <!-- Hero Content -->
         <div class="relative z-20 max-w-5xl mx-auto px-6 text-center">
             <div class="hero-content opacity-0 translate-y-8">
-                <p class="text-brand-gold text-sm tracking-[0.3em] uppercase mb-6 font-medium">Bespoke Travel Design</p>
+                <p class="text-brand-gold text-sm tracking-[0.3em] uppercase mb-6 font-medium">Bespoke Travel Plan</p>
                 <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium leading-tight mb-6">
                     Not just trips.<br>
                     <span class="italic text-brand-gold">Carefully crafted</span><br>
@@ -182,7 +147,7 @@
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300" style="transition-delay: 100ms;">
+                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300" >
                     <div class="flex gap-1 mb-4">
                         <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
@@ -201,7 +166,7 @@
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300" style="transition-delay: 200ms;">
+                <div class="bg-brand-cream p-8 rounded-2xl scroll-reveal hover:shadow-xl transition-shadow duration-300" >
                     <div class="flex gap-1 mb-4">
                         <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-brand-gold text-brand-gold"></i>
@@ -235,8 +200,8 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- International -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal">
-                    <img src="http://static.photos/travel/800x1000/1" alt="International Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#contact" class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal">
+                    <img src="https://images.pexels.com/photos/16138199/pexels-photo-16138199.jpeg" alt="International Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -249,11 +214,11 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Luxury -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 100ms;">
-                    <img src="http://static.photos/luxury/800x1000/2" alt="Luxury Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#contact" class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" >
+                    <img src="https://images.pexels.com/photos/2227774/pexels-photo-2227774.jpeg" alt="Luxury Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -266,11 +231,11 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Honeymoon -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 200ms;">
-                    <img src="http://static.photos/nature/800x1000/3" alt="Honeymoon" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#contact" class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" >
+                    <img src="https://images.pexels.com/photos/9149398/pexels-photo-9149398.jpeg" alt="Honeymoon" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -283,11 +248,11 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Family -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal">
-                    <img src="http://static.photos/outdoor/800x1000/4" alt="Family Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#contact" class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal">
+                    <img src="https://images.pexels.com/photos/28934193/pexels-photo-28934193.jpeg" alt="Family Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -300,11 +265,11 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Corporate -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 100ms;">
-                    <img src="http://static.photos/office/800x1000/5" alt="Corporate Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#contact" class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" >
+                    <img src="https://images.pexels.com/photos/4427816/pexels-photo-4427816.jpeg" alt="Corporate Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -317,11 +282,11 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Adventure -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" style="transition-delay: 200ms;">
-                    <img src="http://static.photos/aerial/800x1000/6" alt="Adventure Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#contact" class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer scroll-reveal" >
+                    <img src="https://images.pexels.com/photos/29548252/pexels-photo-29548252.jpeg" alt="Adventure Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -334,7 +299,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -352,7 +317,7 @@
                 <div class="hidden md:block absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
 
                 <!-- Step 1 -->
-                <div class="relative scroll-reveal">
+                <div class="relative process-step">
                     <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
                         <i data-lucide="message-circle" class="w-7 h-7"></i>
                     </div>
@@ -364,7 +329,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="relative scroll-reveal" style="transition-delay: 100ms;">
+                <div class="relative process-step">
                     <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
                         <i data-lucide="pen-tool" class="w-7 h-7"></i>
                     </div>
@@ -376,7 +341,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="relative scroll-reveal" style="transition-delay: 200ms;">
+                <div class="relative process-step">
                     <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
                         <i data-lucide="check-circle" class="w-7 h-7"></i>
                     </div>
@@ -388,7 +353,7 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="relative scroll-reveal" style="transition-delay: 300ms;">
+                <div class="relative process-step">
                     <div class="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center text-brand-gold mb-6 relative z-10 mx-auto md:mx-0">
                         <i data-lucide="phone" class="w-7 h-7"></i>
                     </div>
@@ -446,7 +411,7 @@
 
                 <div class="relative scroll-reveal">
                     <div class="aspect-[4/5] rounded-2xl overflow-hidden">
-                        <img src="http://static.photos/workspace/800x1000/10" alt="Travel Planning" class="w-full h-full object-cover">
+                        <img src="https://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeg" alt="Travel Planning" class="w-full h-full object-cover">
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-brand-gold text-brand-dark p-6 rounded-2xl max-w-xs hidden md:block">
                         <p class="font-serif text-lg italic">"Travel is the only thing you buy that makes you richer."</p>
@@ -457,7 +422,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 bg-brand-cream">
+    <section id="contact" class="py-24 bg-brand-cream">
         <div class="max-w-4xl mx-auto px-6 text-center scroll-reveal">
             <p class="text-brand-gold text-sm tracking-[0.2em] uppercase mb-4">Begin Your Journey</p>
             <h2 class="font-serif text-4xl md:text-6xl text-brand-dark mb-6">Ready for your<br>perfect trip?</h2>
@@ -476,67 +441,10 @@
         </div>
     </section>
 
+
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white py-16 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="md:col-span-2">
-                    <div class="flex items-center gap-2 mb-6">
-                        <i data-lucide="compass" class="w-8 h-8 text-brand-gold"></i>
-                        <div class="flex flex-col">
-                            <span class="font-serif text-2xl font-semibold">Pruthvi Paryatan</span>
-                            <span class="text-xs tracking-[0.2em] text-white/60 uppercase">Travel</span>
-                        </div>
-                    </div>
-                    <p class="text-white/60 max-w-sm mb-6">Bespoke travel planning for discerning travelers. Creating personalized journeys that inspire, delight, and exceed expectations.</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-serif text-lg mb-6 text-brand-gold">Quick Links</h4>
-                    <ul class="space-y-3 text-white/60">
-                        <li><a href="#experiences" class="hover:text-white transition-colors">Experiences</a></li>
-                        <li><a href="#process" class="hover:text-white transition-colors">How It Works</a></li>
-                        <li><a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a></li>
-                        <li><a href="#about" class="hover:text-white transition-colors">About Leena</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-serif text-lg mb-6 text-brand-gold">Contact</h4>
-                    <ul class="space-y-3 text-white/60">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="mail" class="w-4 h-4 text-brand-gold"></i>
-                            <span>leena@pruthviparyatan.com</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="phone" class="w-4 h-4 text-brand-gold"></i>
-                            <span>+91 99999 99999</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold"></i>
-                            <span>Mumbai, India</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-white/40 text-sm">© 2024 Pruthvi Paryatan Travel. All rights reserved.</p>
-                <p class="text-white/40 text-sm">Crafted with precision and passion.</p>
-            </div>
-        </div>
-    </footer>
+     <custom-footer></custom-footer>
+    
 
     <!-- Contact Modal -->
     <div id="contact-modal" class="fixed inset-0 z-[60] hidden">

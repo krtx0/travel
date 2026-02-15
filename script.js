@@ -139,6 +139,19 @@ document.addEventListener('keydown', (e) => {
         closeModal();
     }
 });
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".process-step", {
+  y: 60,
+  opacity: 0,
+  duration: 0.6,
+  ease: "power3.out",
+  stagger: 0.15,   // controls one-after-another timing
+  scrollTrigger: {
+    trigger: "#process",
+    start: "top 75%",
+  }
+});
 
 // Form Submission Handler
 function handleSubmit(e) {
